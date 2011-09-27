@@ -1,4 +1,31 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<div id="content">
+    <div class="profile-wrapper">
+     <h1 class="name"><%= @user.name %></h1>
+        
+        <div class="contain">
+            <div class="profile-meta left">
+                <p class="jobtitle"><%= @user.job_title %></p>
+                <p class="location"><%= @user.location %></p>
+            </div>
+            <div class="payform right">
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="payPalForm">
+                   <!-- <input type="hidden" name="item_number" value="01 - General Payment to FreelanceSwitch.com"> -->
+                    <input type="hidden" name="cmd" value="_xclick">
+                   <!-- <input type="hidden" name="no_note" value="1"> -->
+                    <input type="hidden" name="business" value="<%= @user.paypal_email %>">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="return" value="http://freelanceswitch.com/payment-complete/">
+                    <input type="text" value="" size="4" name="amount" id="amount" class="text">
+                    <button id="submitbutton" class="button paypal" type="submit"><span class="button-content">Pay Now</span></button>
+                </form>
+            </div><!-- /payform -->
+
+        </div>
+        
+        <div class="profile-details">
+         <p> <%= @user.details %> </p>
+        </div>
+        
+        
+    </div><!-- /wrapper -->
+</div><!--/content-->
