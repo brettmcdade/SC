@@ -26,3 +26,17 @@ ul.hmenu li {
   border: solid 1px #C66;
 }
 
+/* Forms */
+form input, form textarea {
+    border: 5px solid #EEEEEE;
+    border-radius: 5px 5px 5px 5px;
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 13px;
+    padding: 8px;
+    width: 240px;
+}
+form label {
+    color: #777;
+    display: block;
+    font-weight: bold;
+}
