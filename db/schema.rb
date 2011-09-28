@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927164958) do
+ActiveRecord::Schema.define(:version => 20110928143606) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110927164958) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.string   "paypal_email"
+    t.string   "user_name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
