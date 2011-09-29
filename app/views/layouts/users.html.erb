@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <%= javascript_include_tag 'jquery.backstretch.min' %>
+  
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<div id="header">
+<div class="user-auth-nav" style="float:right">
+<% if user_signed_in? %>
+<div class="tab">
+<%= link_to('Edit registration', edit_user_registration_path) %>
+</div>
+<div class="tab">
+<%= link_to('Logout', destroy_user_session_path) %>
+</div>
+<% else %>
+<div class="tab">
+<%= link_to('Login', new_user_session_path) %>
+</div>
+<div class="tab">
+<%= link_to('Register', new_user_registration_path) %>
+</div>
+<% end %>
+</div>
+</div>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+<script>
+	<% if @user.photo.exists? then %>
+	$.backstretch("<%= @user.photo.url %>");
+	<% else %>
+	<p> There are no photo's attached, upload one. </p>
+	<% end %>
+</script>
+
+<%= debug(params) if Rails.env.development? %>
+</body>
+</html>
