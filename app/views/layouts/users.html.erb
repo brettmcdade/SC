@@ -38,6 +38,19 @@
 <%= yield %>
 
 <script>
+$(window).resize(function(){
+
+$('.profile-wrapper').css({
+position:'absolute',
+left: ($(window).width() - $('.profile-wrapper').outerWidth())/2,
+top: ($(window).height() - $('.profile-wrapper').outerHeight())/2
+});
+});
+// To initially run the function:
+$(window).resize();
+</script>
+
+<script>
 	<% if @user.photo.exists? then %>
 	$.backstretch("<%= @user.photo.url %>");
 	<% else %>

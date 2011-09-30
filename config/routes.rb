@@ -2,11 +2,14 @@ Codey::Application.routes.draw do
   #get \"users\/show\"
 
   root :to => "home#index"
+  
+  devise_for :users, :path_names => { :sign_up => "register" }, :controllers => { :registrations => "registrations" }
 
-  devise_for :users
   resources :users, :only => :show
 
-
+  # Creates http://salmonchase.me/username
+  match "/:id", :to => "users#show", :as => "user"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -63,4 +66,6 @@ Codey::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  
+  match ':controller/:id/:action'
 end

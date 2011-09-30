@@ -9,17 +9,22 @@
             </div>
             <div class="payform right">
                 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" id="payPalForm">
-                   <!-- <input type="hidden" name="item_number" value="01 - General Payment to FreelanceSwitch.com"> -->
                     <input type="hidden" name="cmd" value="_xclick">
-                   <!-- <input type="hidden" name="no_note" value="1"> -->
+					<input type="hidden" name="item_name" value="Payment For Registering Parties For CASE -> 'Test Case From 007'"> 
                     <input type="hidden" name="business" value="<%= @user.paypal_email %>">
+					<input name="receiver_email" type="hidden" value="brettmcdade@gmail.com">
+					 
+					<input id="notify_url" name="notify_url" type="hidden" value="http://localhost:3000/payment/ipn" /> 
+					<input id="cancel_return" name="cancel_return" type="hidden" value="http://localhost:3000/payment/notify" /> 
+					<input id="return" name="return" type="hidden" value="http://localhost:3000/payment/notify" /> 
+					
                     <input type="hidden" name="currency_code" value="USD">
                     <input type="hidden" name="return" value="http://freelanceswitch.com/payment-complete/">
                     <input type="text" value="" size="4" name="amount" id="amount" class="text">
                     <button id="submitbutton" class="button paypal" type="submit"><span class="button-content">Pay Now</span></button>
                 </form>
             </div><!-- /payform -->
-
+			
         </div>
         
         <div class="profile-details">
